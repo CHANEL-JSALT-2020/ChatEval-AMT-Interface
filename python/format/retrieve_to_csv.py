@@ -3,6 +3,7 @@ from xml.etree import ElementTree
 import csv
 import re
 from format import *
+import argparse
 
 number = re.compile(r'NUMBER_([0-9]*)')
 answer = re.compile(r'ANSWER_([0-9]*)')
@@ -85,5 +86,10 @@ def convert(path_pkl, path_out, keep_attention = True, add_hitid=False):
 
 
 if __name__ == '__main__':
-
-    convert('../../html/030820_first_public.pkl', './030820_first_public_finding_noatts.csv', keep_attention=False)
+    parser = argparse.ArgumentParser()
+    parser.add_argument('path_in', type=str, help="Path of the .pkl containing the retrieved hits")
+    parser.add_argument('path_out', type=str, help="Path of .csv where the converted data will be written")
+    parser.add_argument('-a', '--keep_attention', action='store_true', default=False, help="Whether to keep the attention checks in the output or in a seperate file (default: False, which means attention in a seperate file)")
+    parser.add_argument('-i', '--hit_id', action='store_true', default=False, help="Whether to add hit_id to the csv (default : False)")
+    args = parser.parse_args()
+    convert(args.path_in, args.path_out, keep_attention=args.keep_attention, add_hitid=args.hit_id)

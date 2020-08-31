@@ -17,7 +17,7 @@ pip install boto3
 ### Launching a Hit
 
 ```
-usage: launch_hit.py [-h] [--name NAME] [-b] [-n N] [--window WINDOW]
+usage: python launch_hit.py [-h] [--name NAME] [-b] [-n N] [--window WINDOW]
                      [--wage_per_judgement WAGE_PER_JUDGEMENT] [--duration DURATION]
                      [--lifetime LIFETIME] [--keywords KEYWORDS] [--description DESCRIPTION]
                      [--max_assignments MAX_ASSIGNMENTS] [--title TITLE] [--qualification]
@@ -48,6 +48,20 @@ optional arguments:
   --hit_file HIT_FILE
 
 ```
+
+### Retrieving hits
+```
+usage: python retrieve_responses.py [-d HIT_FILE] [-b] [-p] [-o] [--delete]
+
+optional arguments:
+    -d, --hit_list_path   Path to a .txt file with one HIT ID per line.
+    -b, --sandbox         Set to true to run in the sandbox.
+    -p, --pay             Set to true to pay the workers.
+    -o, --out             amt_hit_responses.pkl
+    --delete              supposed to take the hits off of AMT (not sure if it works)
+```
+Scripts to extract the useful informations off of the .pkl file can be found ~/python/format/retrieve_to_csv.py
+
 
 ## Generating html for web interface
 ### Prerequisite
