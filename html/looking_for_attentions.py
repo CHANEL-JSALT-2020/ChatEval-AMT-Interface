@@ -32,7 +32,7 @@ def make_segments(dialogs, window, min_size=2):
     segments = []
     for d in dialogs:
         for i in range(min_size, len(d)):
-            segments.append((d[i][0], [d[j][1] for j in range(max(0, i - window + 1), i + 1)]))
+            segments.append((d[i][0], [d[j][1] for j in range(max(0, i - window + 1), i + 1)], [d[j][0] for j in range(max(0, i - window + 1), i + 1)]))
 
     rand = random.Random()
     rand.seed(a=1)
@@ -50,8 +50,11 @@ def add_attention_checks(segments, n):
 
     while i < len(segments):
         batch = [segments[j] for j in range(i, min(i + n, len(segments)))]
-        attention = ("ATTENTION-CHECK", rand.choice(segments)[1])
-        attention[1][-1] = rand.choice(segments)[1][-1]
+        randomed = rand.choice(segments)
+        attention = (f"ATTENTION-CHECK", randomed[1], randomed[2])
+        nrandomed = rand.choice(segments)
+        attention[1][-1] = nrandomed[1][-1]
+        attention[2][-1] = nrandomed[2][-1]
         batch.append(attention)
         rand.shuffle(batch)
         new_segments.extend(batch)
@@ -185,18 +188,19 @@ if __name__ == '__main__':
     segments = make_segments(dialogs, args.window)
 
     segments = add_attention_checks(segments, args.n)
-    print(segments)
-    rows = read_csv('../python/format/030820_first_public_finding_atts.csv')
+    print(segments[:20])
+    rows = read_csv('../python/format/030820_first_public_atts_hitid.csv')
+
 
     hits = {}
-    for r in rows[1:]:
+    for r in rows:
         print(r)
         if r[3] in hits.keys():
             hits[r[3]].add(r[0])
         else:
             hits[r[3]] = {r[0]}
 
-    matched = [['HITId', 'UID', 'TEXT']]
+    matched = [['HITId', 'ATTENTION_N', 'UID', 'TEXT']]
 
     for i in range(0, len(segments), args.n):
         for k, v in hits.items():
@@ -208,7 +212,11 @@ if __name__ == '__main__':
                 for a in nl:
                     if a[:15] == 'ATTENTION-CHECK':
                         id = seg[next:].index('ATTENTION-CHECK')
-                        matched.append([k, a, segments[i+id][1]])
+                        m = []
+                        for j in range(len(segments[i+id][1])):
+                            m.append([k, a, segments[i+id][2][j], segments[i+id][1][j]])
+                        matched.extend(m)
                         next = id
-    pkl.dump(matched, open('attentions.pkl', 'wb'))
+    write_csv('./attentions.csv', matched)
+    #pkl.dump(matched, open('attentions.pkl', 'wb'))
     print(matched)
