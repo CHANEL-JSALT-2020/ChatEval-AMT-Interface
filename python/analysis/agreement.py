@@ -104,16 +104,18 @@ def annotation_per_annotator2task_data(annotations):
     all_uid = list(annotations)
     annotators = []
     data = []
+    task_data = []
     for uid, rating_per_annotator in annotations.items():
         for annotator, rating in rating_per_annotator.items():
-            if annotator not in annotators:
-                annotators.append(annotator)
-                data.append([None]*len(all_uid))
-            data[annotators.index(annotator)][all_uid.index(uid)] = rating
-
-    task_data = []
-    for i in range(len(data)):
-        task_data.extend([str(i), str(j), str(data[i][j]) if data[i][j] else None] for j in range(len(data[i])))
+            task_data.append([annotator, uid, int(rating)])
+    #         if annotator not in annotators:
+    #             annotators.append(annotator)
+    #             data.append([None]*len(all_uid))
+    #         data[annotators.index(annotator)][all_uid.index(uid)] = rating
+    #
+    # task_data = []
+    # for i in range(len(data)):
+    #     task_data.extend([str(i), str(j), str(data[i][j]) if data[i][j] else None] for j in range(len(data[i])))
 
     return task_data
 
@@ -175,7 +177,7 @@ def ordinal(a, b):
     return (sum([i for i in range(a, b+1)]) - ((a+b)/2))**2
 
 
-def compute_agreement(sce_path, nb_turns_per_hit, nb_annotators=None, wo_attention_check=False):
+def compute_agreement(sce_path, nb_turns_per_hit=None, nb_annotators=None, wo_attention_check=False):
     # Compute Kappa coefficient and Krippendorff's alpha with nltk library (https://www.nltk.org/api/nltk.metrics.html)
     rows = read_csv(sce_path)
     if nb_annotators:
@@ -230,6 +232,11 @@ def compute_krippendorff(sce_path, output_path='', wo_attention_check=False, bad
         print("Krippendorff's alpha for interval metric: ", krippendorff.alpha(reliability_data=data))
         print("Krippendorff's alpha for ordinal metric: ", krippendorff.alpha(reliability_data=data,
                                                                               level_of_measurement='ordinal'))
+
+        # with nltk library
+        task_data = annotations2task_data(annotations)
+        rating_task = AnnotationTask(data=task_data, distance=ordinal)
+        print("Krippendorff's alpha for ordinal metric (nltk): ", rating_task.alpha())
 
 
 def compute_spearman(sce_path):

@@ -12,6 +12,7 @@ How many turns have been annotated x times: [(1, 279), (2, 360), (3, 165), (4, 3
 Krippendorff's alpha for nominal metric:  0.5560357535311302
 Krippendorff's alpha for interval metric:  0.7797267743191827
 Krippendorff's alpha for ordinal metric:  0.760232373794547
+Krippendorff's alpha for ordinal metric (nltk):  0.746835444360306
 --- Threshold 0.2---
 - Before filtering: -
 # of annotations: 4455
@@ -26,6 +27,7 @@ How many turns have been annotated x times: [(1, 134), (2, 310), (3, 340), (4, 8
 Krippendorff's alpha for nominal metric:  0.5585557785510276
 Krippendorff's alpha for interval metric:  0.7860384517391108
 Krippendorff's alpha for ordinal metric:  0.7612184782205753
+Krippendorff's alpha for ordinal metric (nltk):  0.7545529264125952
 --- Threshold 0.3---
 - Before filtering: -
 # of annotations: 4455
@@ -40,6 +42,7 @@ How many turns have been annotated x times: [(1, 39), (2, 210), (3, 335), (4, 26
 Krippendorff's alpha for nominal metric:  0.455848597284371
 Krippendorff's alpha for interval metric:  0.6996873508916428
 Krippendorff's alpha for ordinal metric:  0.6729056532595146
+Krippendorff's alpha for ordinal metric (nltk):  0.6564511542826674
 --- Threshold 0.4---
 - Before filtering: -
 # of annotations: 4455
@@ -54,6 +57,7 @@ How many turns have been annotated x times: [(1, 20), (2, 189), (3, 350), (4, 26
 Krippendorff's alpha for nominal metric:  0.4493678470677277
 Krippendorff's alpha for interval metric:  0.6933421143019365
 Krippendorff's alpha for ordinal metric:  0.6674734419031683
+Krippendorff's alpha for ordinal metric (nltk):  0.6510969043308593
 --- Threshold 0.5---
 - Before filtering: -
 # of annotations: 4455
@@ -68,6 +72,7 @@ How many turns have been annotated x times: [(2, 100), (3, 314), (4, 370), (5, 1
 Krippendorff's alpha for nominal metric:  0.4173583140809831
 Krippendorff's alpha for interval metric:  0.6773780060757557
 Krippendorff's alpha for ordinal metric:  0.6519938534037171
+Krippendorff's alpha for ordinal metric (nltk):  0.6369301319384311
 --- Threshold 0.6---
 - Before filtering: -
 # of annotations: 4455
@@ -82,6 +87,7 @@ How many turns have been annotated x times: [(2, 40), (3, 274), (4, 440), (5, 14
 Krippendorff's alpha for nominal metric:  0.3829603676705766
 Krippendorff's alpha for interval metric:  0.6334523138354795
 Krippendorff's alpha for ordinal metric:  0.6135797847912958
+Krippendorff's alpha for ordinal metric (nltk):  0.5945471019225697
 --- Threshold 0.7---
 - Before filtering: -
 # of annotations: 4455
@@ -96,6 +102,7 @@ How many turns have been annotated x times: [(2, 40), (3, 259), (4, 440), (5, 15
 Krippendorff's alpha for nominal metric:  0.37702070953742683
 Krippendorff's alpha for interval metric:  0.6284025873534553
 Krippendorff's alpha for ordinal metric:  0.6093132298242963
+Krippendorff's alpha for ordinal metric (nltk):  0.5903957888143403
 --- Threshold 0.8---
 - Before filtering: -
 # of annotations: 4455
@@ -110,6 +117,7 @@ How many turns have been annotated x times: [(2, 20), (3, 254), (4, 455), (5, 16
 Krippendorff's alpha for nominal metric:  0.3710341538265284
 Krippendorff's alpha for interval metric:  0.6209934848855057
 Krippendorff's alpha for ordinal metric:  0.6020166554025572
+Krippendorff's alpha for ordinal metric (nltk):  0.583420102298764
 --- Threshold 0.9---
 - Before filtering: -
 # of annotations: 4455
@@ -124,6 +132,7 @@ How many turns have been annotated x times: [(2, 15), (3, 189), (4, 485), (5, 20
 Krippendorff's alpha for nominal metric:  0.33952842870753974
 Krippendorff's alpha for interval metric:  0.5951822029359967
 Krippendorff's alpha for ordinal metric:  0.577486589608371
+Krippendorff's alpha for ordinal metric (nltk):  0.5567227031270303
 --- Threshold 1.0---
 - Before filtering: -
 # of annotations: 4455
@@ -138,3 +147,4 @@ How many turns have been annotated x times: [(2, 5), (5, 889)]
 Krippendorff's alpha for nominal metric:  0.19865565872234703
 Krippendorff's alpha for interval metric:  0.41178666850407963
 Krippendorff's alpha for ordinal metric:  0.3892403831124407
+Krippendorff's alpha for ordinal metric (nltk):  0.3769076152067712
